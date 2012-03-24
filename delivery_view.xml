@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record model="ir.ui.view" id="spese_trasporto_colli_form_view">
+                <field name="name">spese.trasporto.colli.form</field>
+                <field name="model">delivery.grid.line</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="delivery.view_delivery_grid_line_form"/>
+                <field name="arch" type="xml">
+                	
+                        
+                        <field name="type" position="replace" >
+                    		 <field name="type2"/>
+                    </field>
+                   <!--   <field name="variable_factor" position="after">
+                    	<field name="stock_warehouse"/>
+                    	</field> -->
+                    		
+                    	
+                    	
+                </field>
+				</record>  
+				
+				
+				
+		<record model="ir.ui.view" id="spese_trasporto_colli_tree_view">
+                <field name="name">spese.trasporto.colli.tree	</field>
+                <field name="model">delivery.grid.line</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="delivery.view_delivery_grid_line_tree"/>
+                <field name="arch" type="xml">
+                	
+                        
+                        <field name="type" position="replace" >
+                    		 <field name="type2"/>
+                    </field>
+                    
+                    	
+                    	
+                </field>
+				</record>    
+		<record model="ir.ui.view" id="testata_trasporto_colli_form_view">
+                <field name="name">testata.trasporto.colli.form</field>
+                <field name="model">delivery.grid</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="delivery.view_delivery_grid_form"/>
+                <field name="arch" type="xml">
+                    	<field name="carrier_id" position='replace'>	
+                        	<field name="magazzino_id"/>
+                    
+                	</field>
+                </field>
+            </record>
+         
+         <record model="ir.ui.view" id="testata_trasporto_colli_tree_view">
+                <field name="name">testata.trasporto.colli.tree</field>
+                <field name="model">delivery.grid</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="delivery.view_delivery_grid_tree"/>
+                <field name="arch" type="xml">
+                    	<field name="carrier_id" position='replace'>	
+                        	<field name="magazzino_id"/>
+                    
+                	</field>
+                </field>
+            </record>
+    </data>
+</openerp>	 
+
+		 
+		 
+		 

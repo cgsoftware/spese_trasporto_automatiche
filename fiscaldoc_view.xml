@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    
+    
+    		 <record model="ir.ui.view" id="sp_trasp_auto_form_view">
+                <field name="name">sp.trasp.auto.form</field>
+                <field name="model">fiscaldoc.header</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="ItalianFiscalDocument.view_fiscaldoc_form"/>
+                <field name="arch" type="xml">
+                    <field name="totale_colli" position="replace">   
+                  		<field name="totale_colli" on_change="on_change_colli(magazzino_id,totale_colli,context)"/>  
+                  	
+                  	</field>
+                </field>
+            </record>
+    </data>
+</openerp>
