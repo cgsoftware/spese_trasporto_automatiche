@@ -13,6 +13,16 @@ from osv import fields, osv
 
 class FiscalDocHeader(osv.osv):
     _inherit = "fiscaldoc.header"
+    _columns = {#'flag_obb': fields.integer('Spese trasporto obbligatorie', select=True),
+                'flag_obb':fields.selection([
+                    ('si','Draft'),
+                    ('no','NoNONONONON'),
+                  
+                   ],    'State', select=True, ),
+                }
+                
+                
+            
    
     def on_change_colli(self, cr, uid, ids, magazzino_id, totale_colli, context):
         #import pdb;pdb.set_trace()
@@ -34,4 +44,28 @@ class FiscalDocHeader(osv.osv):
                             #v['spese_trasporto'] = 0
                         
                         return {'value': v}
+    def on_change_porto_id(self, cr, uid, ids, porto_id, name, context):
+        
+        v = {}
+        warning={}
+        doc_obj=self.pool.get('fiscaldoc.header')
+        id_doc = doc_obj.search(cr, uid, [('name','=', name )])
+        porto_obj=self.pool.get('stock.picking.carriage_condition')
+        test = porto_obj.browse(cr, uid, porto_id)
+        id_si= porto_obj.search(cr, uid, [('name','like', 'FATTURA' )])
+        if porto_id in id_si:
+            #import pdb;pdb.set_trace()
+            v['flag_obb'] = 'si'
+        
+            warning = {
+                                    'title': 'ATTENZIONE !',
+                                    'message':'LE SPESE DI TRASPORTO SONO OBBLIGATORIE',
+                                    
+                                    }
+            #ok = self.write(cr,uid,id_doc,v)
+        else:
+            v['flag_obb'] = 'no'
+        return {'value': v ,'warning':warning}
+        
+    
 FiscalDocHeader()

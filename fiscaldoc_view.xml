@@ -16,5 +16,34 @@
                   	</field>
                 </field>
             </record>
+            
+            <record model="ir.ui.view" id="sp_trasp_obbligatorie_form_view">
+                <field name="name">sp.trasp.obbligatorie.form</field>
+                <field name="model">fiscaldoc.header</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="ItalianFiscalDocument.view_fiscaldoc_form"/>
+                <field name="arch" type="xml">
+                    <field name="spese_trasporto" position="replace">
+                          
+                  		<field name="spese_trasporto" attrs="{'required':[('flag_obb','=', 'si')]}"/> 
+                  		<field name="flag_obb"  invisible="True"/> 
+                  	
+                  	</field>
+                </field>
+            </record>
+            
+            <record model="ir.ui.view" id="sostituisci_campi_form">
+                <field name="name">sostituisci.campi.form</field>
+                <field name="model">fiscaldoc.header</field>
+                <field name="type">form</field>
+                <field name="inherit_id" ref="ItalianFiscalDocument.view_fiscaldoc_form"/>
+                <field name="arch" type="xml">
+                    <field name="porto_id" position="replace">
+                          
+                  		<field name="porto_id" on_change="on_change_porto_id(porto_id,name,context)"/>  
+                  	
+                  	</field>
+                </field>
+            </record>
     </data>
 </openerp>
